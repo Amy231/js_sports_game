@@ -2,15 +2,6 @@
 //let first_shot= Math.floor(Math.random()*10)+1;
 let TeamoneshootButton = document.querySelector("#teamone-shoot-button"); 
 let TeamtwoshootButton = document.querySelector("#teamtwo-shoot-button");
-
-document.querySelector('button').addEventListener('click', (event) =>{
-    event.target.textcontent = 'SHOOT'
-let first_shot = Math.floor(Math.random() *10)+1;
-})
-console.log('SHOOT');
-console.log(TeamoneshootButton);
-console.log(TeamtwoshootButton);
-console.log(Math.floor(Math.random()*10)+1);
 // number of shots taken
 let teamonenumshots = document.querySelector("#teamone-numshots");
 let teamtwonumshots = document.querySelector("#teamtwo-numshots");
@@ -26,11 +17,48 @@ console.log(teamtwonumgoals);
 let reset = document.querySelector("#reset-button");
 let numberofresets = document.querySelector("#num-resets");
 
-document.querySelector('button').addEventListener('click', (event) =>{
-    event.target.textcontent = 'RESET'
+TeamoneshootButton.addEventListener('click', function() {
+    let newshotstaken = Number(teamonenumshots.innerHTML) + 1;
+    teamonenumshots.innerHTML = newshotstaken
+
+    let randNum = Math.random();
+    let shotissuccessful = randNum > 0.5
+    if(shotissuccessful) { 
+        let newteamonenumgoals = Number(teamonenumgoals.innerHTML) + 1;
+        teamonenumgoals.innerHTML = newteamonenumgoals
+    }
+
 })
 
-console.log('RESET');
-console.log(reset);
-console.log(numberofresets);
+TeamtwoshootButton.addEventListener('click', function() {
+    let newshotstaken = Number(teamtwonumshots.innerHTML) + 1;
+    teamtwonumshots.innerHTML = newshotstaken
+
+    let randNum = Math.random();
+    let shotissuccessful = randNum > 0.5
+    if(shotissuccessful) { 
+        let newteamtwonumgoals = Number(teamtwonumgoals.innerHTML) + 1;
+        teamtwonumgoals.innerHTML = newteamtwonumgoals
+    }
+      
+
+})
+
+reset.addEventListener('click', function() {
+    let newresetcounter = Number(numberofresets.innerHTML) + 1;
+        numberofresets.innerHTML = newresetcounter
+        teamonenumshots.innerHTML = 0;
+        teamtwonumshots.innerHTML = 0
+        teamonenumgoals.innerHTML = 0
+        teamtwonumgoals.innerHTML = 0
+
+})
+
+
+
+
+
+console.log(TeamoneshootButton);
+console.log(TeamtwoshootButton);
+
 
